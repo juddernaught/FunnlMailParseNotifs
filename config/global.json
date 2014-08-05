@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "FunnlMail": {
+            "applicationId": "oXAOrMLIRzLNZh50VZ3sk3LBEfUuNDXuLZVBvHdV", 
+            "masterKey": "nhTHDkiMMMJgTX5SkCX31JvZCJBoSEunzcxvP98U"
+        }, 
+        "_default": {
+            "link": "FunnlMail"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.19"
+    }
+}
