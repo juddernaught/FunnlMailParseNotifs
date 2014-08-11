@@ -20,7 +20,7 @@ app.post('/send_notification', function(req, res) {
   Parse.Push.send({
     channels: [ "webhook_id_" + req.body.webhook_id ],
     data: {
-      alert: "Testing Notification: Dan Judd just got an important email."
+      alert: "You've just received an important email!"
     }
   }, {
     success: function() {
