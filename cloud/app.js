@@ -18,7 +18,7 @@ app.get('/hello', function(req, res) {
 
 app.post('/send_notification', function(req, res) { 
   Parse.Push.send({
-    channels: [ "testers" ],
+    channels: [ "webhook_id_" + req.body.webhook_id ],
     data: {
       alert: "Testing Notification: Dan Judd just got an important email."
     }
@@ -30,10 +30,9 @@ app.post('/send_notification', function(req, res) {
       // Handle error
     }
   }); 
-  console.log(req);
   console.log(req.body);
   console.log(req.body.webhook_id);
-  console.log(JSON.parse(req));
+  console.log("webhook_id_" + req.body.webhook_id);
 });
 
 app.post('/failure', function(req, res) {
