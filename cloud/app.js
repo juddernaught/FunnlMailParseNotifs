@@ -18,11 +18,19 @@ app.get('/hello', function(req, res) {
 app.post('/send_notification', function(req, res) { 
   var original = JSON.stringify(req.body.message_data);
   //res.send(JSON.stringify(req.body.message_data));
-  var left_cut1 = original.substring(original.indexOf("addresses") + 25);
-  var left_cut2 = left_cut1.substring(left_cut1.indexOf("name") + 7);
-  var name = left_cut2.substring(0, left_cut2.indexOf("}") - 1);
-  
-
+  var left_cut1 = original.substring(original.indexOf("addresses") + 10);
+  var name = "";
+  // if name for sender exists, then display name
+  if (left_cut1.indexOf("\"name\"") < left_cut1.indexOf("\"to\"")) {
+    var left_cut2 = left_cut1.substring(left_cut1.indexOf("\"name\"") + 8);
+    var name = left_cut2.substring(0, left_cut2.indexOf("}") - 1);
+  }
+  // else display email address to be seen on first line of notif
+  else {
+    var left_cut2 = left_cut1.substring(left_cut1.indexOf("\"email\"") + 9);
+    var name = left_cut2.substring(0, left_cut2.indexOf("}") - 1);
+  }
+  // prepare subject to be displayed on second line
   var left_subj = original.substring(original.indexOf("\"subject\"") + 11);
   var subject = left_subj.substring(0, left_subj.indexOf(",\"folders\"") - 1);
   
@@ -41,7 +49,7 @@ app.post('/send_notification', function(req, res) {
       // Handle error
     }
   }); 
-  console.log("here2");
+  console.log(req.body);
   //iconsole.log(req.body.webhook_id);
   
   //console.log("webhook_id_" + req.body.webhook_id);*/
