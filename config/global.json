@@ -1,8 +1,8 @@
 {
     "applications": {
         "FunnlMail": {
-            "applicationId": "oXAOrMLIRzLNZh50VZ3sk3LBEfUuNDXuLZVBvHdV", 
-            "masterKey": "nhTHDkiMMMJgTX5SkCX31JvZCJBoSEunzcxvP98U"
+            "applicationId": "qRBmYEJxZ6xOYq2Z6UZuz3nqcuy14DxTV63gWnb4", 
+            "masterKey": "qfD4kEP4ZdqqawuGWqWtzED9SnADCgyQoLN6ZKEG"
         }, 
         "_default": {
             "link": "FunnlMail"

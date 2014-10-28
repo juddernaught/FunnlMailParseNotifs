@@ -14,7 +14,29 @@ app.use(express.bodyParser());    // Middleware for reading request body
 app.get('/hello', function(req, res) {
   res.render('hello', { message: 'Congrats, you just set up your app!' });
 });
- 
+
+app.post('/test', function(req, res) { 
+  var webhookClass = Parse.Object.extend("webhookClass");
+  var query = new Parse.Query(webhookClass);
+  query.equalTo("account_id", req.body.account_id);
+  query.find({
+  success: function(results) {
+    var webhookObject = results[0];
+    var senders = webhookObject.get('webhookSender');
+    console.log(senders[0]);
+      res.send("success");
+
+    // The object was retrieved successfully.
+  },
+  error: function(object, error) {
+      res.send("failure");
+
+    // The object was not retrieved successfully.
+    // error is a Parse.Error with an error code and message.
+  }
+  });
+});
+
 app.post('/send_notification', function(req, res) { 
   var original = JSON.stringify(req.body.message_data);
   //res.send(JSON.stringify(req.body.message_data));
